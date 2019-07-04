@@ -17,4 +17,13 @@ export class TalentService {
   public getHelloWorld() {
     return this.http.get('http://localhost:8080/hello');
   }
+
+  public listTalents() {
+    return this.http.get('http://localhost:7000/api/talents');
+  }
+
+  public getTalent(talentId) {
+    return this.http.get('http://localhost:7000/api/talents/'+talentId);
+  }
+
 }
