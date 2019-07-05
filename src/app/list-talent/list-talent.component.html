@@ -1,0 +1,43 @@
+  <h1>Talents: </h1>
+
+  <div class="text-right">
+  <form (ngSubmit)="searchTalents()">
+    <label for="name">Search by: </label>  &nbsp;
+      <input name="searchText" type="text" [(ngModel)]="searchText"> &nbsp;
+
+    <button type="submit" class="btn btn-success">Search</button>
+  </form>
+  </div>
+
+  <b *ngIf="talents">{{talents.length}} results found.</b>
+
+  <table border="1" class="table table-dark">
+      <thead>
+        <th>
+          Name
+        </th>
+        <th>
+          Email
+        </th>
+        <th>
+          Phone
+        </th>
+      </thead>
+
+  <tr *ngFor="let talent of talents">
+
+    
+    <td>
+      <a href="view/{{talent.id}}">
+        {{ talent.name }}
+      </a>
+      </td>
+      <td>
+      ({{ talent.emailAddress }})
+      </td>
+      <td>
+        {{ talent.phoneNumber }}  
+      </td>
+    </tr>
+  
+  </table>
