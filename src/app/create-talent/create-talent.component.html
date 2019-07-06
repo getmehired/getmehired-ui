@@ -1,9 +1,12 @@
-<h1>Talent Onboarding:</h1>
+<div>
+  <h1>Talent Onboarding:</h1>
+</div>
+
 
 <h3>Step {{stepNumber}} of 6. </h3>
 
 <form>
-
+<!-- Page 1-->
   <span *ngIf="stepNumber == 1">
   <label for="firstName">First Name: </label> &nbsp;
     <input name="firstName" type="text" > 
@@ -11,23 +14,73 @@
   <br>
   <label for="lastName">Last Name: </label> &nbsp;
     <input name="lastName" type="text" >
+
+  <br>
+  <label for="phoneNumber">Phone Number: </label> &nbsp;
+    <input name="phoneNumber" type="integer" >
+
+  <br>
+  <label for="email">Email: </label> &nbsp;
+    <input name="email" type="integer" >
+
+  <br>
+  <label for="mailingAdddress">Mailing Address: </label> &nbsp;
+      <input name="mailingAdddress" type="text" >
+
+  <br>
+  <label for="schedulingLink"> Scheduling Link: </label> &nbsp;
+      <input name="schedulingLink" type="text" >
+  
+  <br>
+  <label for="resume">Upload Resume: </label> &nbsp;
+  <button onclick="myFunction()">Browse</button>
+  <script>
+  function myFunction() {
+          var x = document.createElement("INPUT");
+          x.setAttribute("type", "file");
+          document.body.appendChild(x);
+        }
+  </script>
+  <br>
+  <label for="timeZone"> Time Zone: </label> &nbsp;
+      <input name="timeZone" type="text" >
     
   <br>
-  <button type="button" (click)="goToStep(2)">Next</button>
-
+  
+  <button type="button" (click)="goToStep(2)">Next</button> 
   <div class="progress">
       <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-    </div>
+
+  </div>
+
 
   </span>
-
+<!-- Page 2-->
   <span *ngIf="stepNumber == 2">
-      <label for="ssnNumber">SSN Number: </label> &nbsp;
-        <input name="ssnNumber" type="text" > 
+  <label for="ssnNumber">SSN Number: </label> &nbsp;
+     <input name="ssnNumber" type="text" > 
       
-      <br>
-      <label for="bankAcountNumber">Bank Account: </label> &nbsp;
-        <input name="bankAcountNumber" type="text" > 
+  <br>
+  <label for="bankAcountNumber">Bank Acc Number: </label> &nbsp;
+     <input name="bankAcountNumber" type="text" > 
+  <br>
+  <label for="bankRoutingNumber">Bank Routing Number: </label> &nbsp;
+      <input name="bankRoutingNumber" type="text" > 
+  
+  <br>
+  <label for="validId">Upload Valid Id: </label> &nbsp;
+  <button onclick="myFunction()">Browse</button>
+  <script>
+   function myFunction() {
+          var x = document.createElement("INPUT");
+          x.setAttribute("type", "file");
+          document.body.appendChild(x);
+        }
+  </script>
+  <br>
+  <button type="button" (click)="goToStep(1)">Back</button>
+  <button type="button" (click)="goToStep(3)">Next</button>
+ 
 
   <div class="progress">
       <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
@@ -35,5 +88,125 @@
     
   </span>
 
+  <!-- page 3-->
+  
+  <span *ngIf="stepNumber == 3">
+      
+   <label for="citizenship">Country of Citizenship: </label> &nbsp;
+      <input name="citizenship" type="text" > 
+    
+   <br>
+   <label for="immigrationStatus">Immigration Status: </label> &nbsp;
+      <input name="immigrationStatus" type="text" > 
+
+   <br>
+   <label for="immigrationExpiry">Status Expiry Date: </label> &nbsp;
+       <input name="immigrationExpiry" type="text" >
+
+  <br> 
+   <label for="immigrationdocument">Most Updated Immigration Document: </label> &nbsp;
+      <input name="immigrationdocument" type="text" > 
+
+   <br>
+   <h6>I20/OPT/Greencard/Passport</h6>
+   
+   <button type="button" (click)="goToStep(2)">Back</button>
+    <button type="button" (click)="goToStep(4)">Next</button>
+ 
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    
+    </span>
+
+
+   <!-- page 4-->
+  
+   <span *ngIf="stepNumber == 4">
+      
+      <label for="academicDegree">Highest Academic Degree: </label> &nbsp;
+     
+         <input name="academicDegree" type="text" > 
+        <!--<p><font color="red">Required</font></p>--> 
+         
+       
+      <br>
+      <label for="degreeSubject">Degree Major/Subject: </label> &nbsp;
+         <input name="degreeSubject" type="text" > 
+   
+      <br>
+      <label for="academicInsitute">University/College Name: </label> &nbsp;
+          <input name="academicInsitute" type="text" >
+          <br>
+          <h6>Of Highest Academic Degree</h6>
+   
+     <br> 
+      <label for="graduationDate">Graduation Date or Expected Graduation Date: </label> &nbsp;
+         <input name="graduationDate" type="text" > 
+   
+      <br>
+      <label for="objective">Current Objective/Goal: </label> &nbsp;
+         <input name="objective" type="text" > 
+
+      <br>
+      <label for="supportNeeded">Support Needed In: </label> &nbsp;
+          <input name="supportNeeded" type="text" > 
+   
+      <br>
+      <button type="button" (click)="goToStep(3)">Back</button>
+       <button type="button" (click)="goToStep(5)">Next</button>
+     
+       <div class="progress">
+           <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+       </div>
+       
+       </span>
+
+  <!-- page 5-->
+  
+   <span *ngIf="stepNumber == 5">
+      
+      <label for="currentjob">Current Job Status:</label> &nbsp;
+     
+         <input name="currentjob" type="text" > 
+        <!--<p><font color="red">Required</font></p>--> 
+         
+       
+      <br>
+      <label for="currentSalary">Current Yearly  Salary:</label> &nbsp;
+         <input name="currentSalary" type="text" > 
+   
+      <br>
+      <label for="currentJobTitle">Current Job Title: </label> &nbsp;
+          <input name="currentJobTitle" type="text" >
+          
+   
+     <br> 
+      <label for="currentEmployer">Current Employer: </label> &nbsp;
+         <input name="currentEmployer" type="text" > 
+   
+     <br>
+       
+       <button type="button" (click)="goToStep(4)">Back</button>
+       <button type="button" (click)="goToStep(6)">Next</button>
+       <div class="progress">
+           <div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+       </div>
+      
+       
+       </span>
+
+    <!-- page 6-->
+  
+   <span *ngIf="stepNumber == 6">
+      
+      <h3>Confirm Before Submitting</h3>
+
+       <button type="button" (click)="goToStep(6)">Submit</button>
+       <div class="progress">
+           <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+       </div>
+       
+       </span>
   <!--button type="submit" class="btn btn-success">Search</button -->
 </form>
