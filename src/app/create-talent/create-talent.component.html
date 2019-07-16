@@ -5,7 +5,8 @@
 
 <h3>Step {{stepNumber}} of 6. </h3>
 
-<form>
+<form [formGroup]="talentform" (ngSubmit)="onSubmit(talentform.value)">
+ 
 <!-- Page 1-->
   <span *ngIf="stepNumber == 1">
   <label for="firstName">First Name: </label> &nbsp;
@@ -202,7 +203,7 @@
       
       <h3>Confirm Before Submitting</h3>
 
-       <button type="button" (click)="goToStep(6)">Submit</button>
+       <button type="button" (click)="onSubmit(talentform.value)">Submit</button>
        <div class="progress">
            <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
        </div>

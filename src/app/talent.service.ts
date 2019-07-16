@@ -65,7 +65,7 @@ export class TalentService {
     this.talentinfo=t;
     console.log("the talent is :",this.talentinfo);
     //alert("the talent is :"+this.talentinfo);
-    return this.http.post('http://localhost:8080/api/talents/',t, httpOptions);
+    return this.http.post('http://localhost:7000/api/talents/',t,httpOptions);
   }
 
   public deleteTalent(talentId){
