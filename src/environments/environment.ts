@@ -4,15 +4,7 @@
 
 export const environment = {
   production: false,
-  firebase : {
-    apiKey: "AIzaSyCdsY-WTaHnIHVHY9ZC-yfIIb6ktdVNcCk",
-    authDomain: "getmehiredui.firebaseapp.com",
-    databaseURL: "https://getmehiredui.firebaseio.com",
-    projectId: "getmehiredui",
-    storageBucket: "",
-    messagingSenderId: "347829598948",
-    appId: "1:347829598948:web:7b470ac3c6df5aec"
-  }
+
 };
 
 /*
