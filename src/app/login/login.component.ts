@@ -1,30 +1,36 @@
-import { Component } from '@angular/core';
-import { AuthService } from '../auth.service'
-import { Router, Params } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder,FormGroup,Validator, Validators } from '@angular/forms';
+import { AuthService } from '../auth.service';
+import {Router,Params} from '@angular/router';
 @Component({
-  selector: 'page-login',
-  templateUrl: 'login.component.html',
-  styleUrls: ['login.component.css'],
-  providers: [AuthService]
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
-  errorMessage: string = '';
+  loginForm:FormGroup;
+  errorMessage:string='';
 
-  email: string = '';
-  password: string = '';
-  
 
   constructor(
-    public authService: AuthService,
-    private router: Router,
-  ) {
+    public authService:AuthService,
+    private router:Router,
+    private fb:FormBuilder
+  ) { 
+    this.createForm();
   }
 
-  tryLogin(){
-    this.authService.doLogin(this.email, this.password)
+  createForm(){
+    this.loginForm=this.fb.group(
+      {
+        email:['',Validators.required],
+        password:['',Validators.required]
+      });
+  }
+
+  tryLogin(value){
+    this.authService.doLogin(value)
     .then(res => {
       this.router.navigate(['/list']);
     }, err => {
@@ -32,4 +38,29 @@ export class LoginComponent {
       this.errorMessage = err.message;
     })
   }
+
+  tryFacebookLogin(){
+    this.authService.doFacebookLogin()
+    .then(res => {
+      this.router.navigate(['/list']);
+    })
+  }
+
+  tryTwitterLogin(){
+    this.authService.doTwitterLogin()
+    .then(res => {
+      this.router.navigate(['/list']);
+    })
+  }
+
+  tryGoogleLogin(){
+    this.authService.doGoogleLogin()
+    .then(res => {
+      this.router.navigate(['/list']);
+    })
+  }
+
+  ngOnInit() {
+  }
+
 }
