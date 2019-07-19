@@ -14,10 +14,6 @@ export class TalentService {
     return "String from NG-Service";
   }
 
-  public getHelloWorld() {
-    return this.http.get('http://localhost:8080/hello');
-  }
-
   public listTalents() {
     return this.http.get('http://localhost:7000/api/talents');
   }
