@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../auth.service'
 import { Router, Params } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'page-login',
@@ -26,7 +27,10 @@ export class LoginComponent {
   tryLogin(){
     this.authService.doLogin(this.email, this.password)
     .then(res => {
-      this.router.navigate(['/list']);
+      firebase.auth().currentUser.getIdToken(true).then((idToken) => {
+        localStorage.setItem('idToken', idToken);
+        this.router.navigate(['/list']);
+      });
     }, err => {
       console.log(err);
       this.errorMessage = err.message;

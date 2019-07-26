@@ -15,7 +15,11 @@ export class TalentService {
   }
 
   public listTalents() {
-    return this.http.get('http://localhost:7000/api/talents');
+    const headers = {
+      'idToken': localStorage.getItem('idToken')
+    };
+
+    return this.http.get('http://localhost:7000/api/talents', {headers});
   }
 
   public getTalent(talentId) {
