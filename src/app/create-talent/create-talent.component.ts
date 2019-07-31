@@ -2,11 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TalentService } from '../talent.service';
-import { FormGroup, FormControl } from '@angular/forms';
 import {  FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
 import {Talent} from '../talent';
 
-const URL = 'http://localhost:7000/api/files';
+const URL = 'http://localhost:7000/api/files/resume';
 
 @Component({
   selector: 'app-create-talent',
@@ -38,10 +37,10 @@ export class CreateTalentComponent implements OnInit {
     bankAccount:0,
     routingNumber:0,
     degreeSubject:'',
-    salaryStart:0,
-    currentJob:'',
+    currentSalary:0,
+    currentjobTitle:'',
     currentEmployer:'',
-    jobSalary:0,
+    newjobSalary:0,
     newEmployer:'',
     newPosition:''
   
@@ -88,5 +87,7 @@ export class CreateTalentComponent implements OnInit {
       () => console.log('Observer got a complete notification')
     );
   }
+
+  
 
 }
