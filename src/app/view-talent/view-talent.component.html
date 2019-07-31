@@ -1,12 +1,19 @@
+<h1>Details</h1>
 <div *ngIf="talent">
-  <h1>{{talent.name}}</h1>
+  <h1>{{ talent.name }}</h1>
   <ul>
     <li>
-       Email: <i>{{talent.emailAddress}}</i>
+      Email: <i>{{ talent.emailAddress }}</i>
     </li>
     <li>
-       Phone: <i>{{talent.phoneNumber}}</i>
+        {{ talent.phoneNumber }}
+    </li>
+    <li>
+        {{ talent.phoneNumber }}
     </li>
   </ul>
 </div>
+<div >
+    <button (click)="delete(talent.talentId)">Delete </button>
 
+  </div>

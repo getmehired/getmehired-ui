@@ -4,41 +4,41 @@
 
 
 <h3>Step {{stepNumber}} of 6. </h3>
- 
 <!-- Page 1-->
   <span *ngIf="stepNumber == 1">
   <label for="firstName">First Name: </label> &nbsp;
-    <input name="firstName" type="text" > 
+    <input name="firstName" type="text" [(ngModel)]="firstName"> 
   
   <br>
   <label for="lastName">Last Name: </label> &nbsp;
-    <input name="lastName" type="text" >
+    <input name="lastName" type="text"  [(ngModel)]="lastName">
 
   <br>
   <label for="phoneNumber">Phone Number: </label> &nbsp;
-    <input name="phoneNumber" type="integer" >
+    <input name="phoneNumber" type="integer" [(ngModel)]="talent.phoneNumber">
 
   <br>
   <label for="email">Email: </label> &nbsp;
-    <input name="email" type="integer" >
+    <input name="email" type="integer" [(ngModel)]="talent.emailAddress">
 
   <br>
   <label for="mailingAdddress">Mailing Address: </label> &nbsp;
-      <input name="mailingAdddress" type="text" >
+      <input name="mailingAdddress" type="text" [(ngModel)]="talent.address" >
 
   <br>
   <label for="schedulingLink"> Scheduling Link: </label> &nbsp;
-      <input name="schedulingLink" type="text" >
+      <input name="schedulingLink" type="text" [(ngModel)]="talent.calendlyUrl" >
   
   <br>
   <label for="resume">Upload Resume: </label> &nbsp;
+
   <input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
   <button type="button" class="btn btn-success btn-s" 
     (click)="uploader.uploadAll()" 
     [disabled]="!uploader.getNotUploadedItems().length" >
         Upload Your Resume
   </button>
-
+  
   <br>
   <label for="timeZone"> Time Zone: </label> &nbsp;
       <input name="timeZone" type="text" >
@@ -56,18 +56,24 @@
 <!-- Page 2-->
   <span *ngIf="stepNumber == 2">
   <label for="ssnNumber">SSN Number: </label> &nbsp;
-     <input name="ssnNumber" type="text" > 
+     <input name="ssnNumber" type="text" [(ngModel)]="talent.ssnNumber" > 
       
   <br>
   <label for="bankAcountNumber">Bank Acc Number: </label> &nbsp;
-     <input name="bankAcountNumber" type="text" > 
+     <input name="bankAcountNumber" type="text" [(ngModel)]="talent.bankAcountNumber"> 
   <br>
   <label for="bankRoutingNumber">Bank Routing Number: </label> &nbsp;
-      <input name="bankRoutingNumber" type="text" > 
+      <input name="bankRoutingNumber" type="text" [(ngModel)]="talent.bankRoutingNumber"> 
   
   <br>
   <label for="validId">Upload Valid Id: </label> &nbsp;
-
+  <input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
+  <button type="button" class="btn btn-success btn-s" 
+    (click)="uploader.uploadAll()" 
+    [disabled]="!uploader.getNotUploadedItems().length" >
+        Upload Your Valid Id 
+  </button>
+  
   <br>
   <button type="button" (click)="goToStep(1)">Back</button>
   <button type="button" (click)="goToStep(3)">Next</button>
@@ -91,12 +97,18 @@
       <input name="immigrationStatus" type="text" > 
 
    <br>
-   <label for="immigrationExpiry">Status Expiry Date: </label> &nbsp;
+   <label for="immigrationExpiry">Immigration Status Expiry Date: </label> &nbsp;
        <input name="immigrationExpiry" type="text" >
 
+
   <br> 
-   <label for="immigrationdocument">Most Updated Immigration Document: </label> &nbsp;
-      <input name="immigrationdocument" type="text" > 
+   <label for="validDocument">Most Updated Immigration Document: </label> &nbsp;
+      <input type="file" name="document" ng2FileSelect [uploader]="uploader" />
+      <button type="button" class="btn btn-success btn-s" 
+        (click)="uploader.uploadAll()" 
+        [disabled]="!uploader.getNotUploadedItems().length" >
+            Upload Your  Document
+      </button>
 
    <br>
    <h6>I20/OPT/Greencard/Passport</h6>
@@ -123,7 +135,7 @@
        
       <br>
       <label for="degreeSubject">Degree Major/Subject: </label> &nbsp;
-         <input name="degreeSubject" type="text" > 
+         <input name="degreeSubject" type="text" [(ngModel)]="talent.degreeSubject"> 
    
       <br>
       <label for="academicInsitute">University/College Name: </label> &nbsp;
@@ -157,26 +169,40 @@
   
    <span *ngIf="stepNumber == 5">
       
-      <label for="currentjob">Current Job Status:</label> &nbsp;
+      <label for="currentemploymentStatus">Current Employment Status:</label> &nbsp;
      
-         <input name="currentjob" type="text" > 
+         <input name="currentemploymentStatus" type="text"> 
         <!--<p><font color="red">Required</font></p>--> 
          
        
       <br>
       <label for="currentSalary">Current Yearly  Salary:</label> &nbsp;
-         <input name="currentSalary" type="text" > 
+         <input name="currentSalary" type="text" [(ngModel)]="talent.currentSalary" > 
    
       <br>
       <label for="currentJobTitle">Current Job Title: </label> &nbsp;
-          <input name="currentJobTitle" type="text" >
+          <input name="currentJobTitle" type="text" [(ngModel)]="talent.currentjobTitle" >
           
    
      <br> 
       <label for="currentEmployer">Current Employer: </label> &nbsp;
-         <input name="currentEmployer" type="text" > 
+         <input name="currentEmployer" type="text" [(ngModel)]="talent.currentEmployer"> 
    
      <br>
+
+     <label for="newjobSalary">New Job Salary: </label> &nbsp;
+     <input name="newjobSalary" type="text" [(ngModel)]="talent.newjobSalary"> 
+
+     <br>
+
+     <label for="newEmployer">New Employer: </label> &nbsp;
+       <input name="newEmployer" type="text" [(ngModel)]="talent.newEmployer"> 
+     <br>
+     <label for="newPosition">New Position: </label> &nbsp;
+     <input name="newPosition" type="text" [(ngModel)]="talent.newPosition"> 
+
+     <br>
+
        
        <button type="button" (click)="goToStep(4)">Back</button>
        <button type="button" (click)="goToStep(6)">Next</button>
@@ -192,8 +218,16 @@
    <span *ngIf="stepNumber == 6">
       
       <h3>Confirm Before Submitting</h3>
+      <b *ngIf="errors">{{errors.length}} errors found.</b>
+      <br>
+      <ul>
+        <li *ngFor="let error of errors">
+            {{error.defaultMessage}}
 
-       <button type="button" (click)="onSubmit(talentform.value)">Submit</button>
+        </li>
+      </ul>
+     
+       <button type="button" (click)="createTalent()">Submit</button>
        <div class="progress">
            <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
        </div>

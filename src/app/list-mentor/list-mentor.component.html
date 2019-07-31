@@ -1,0 +1,43 @@
+<h1>Mentors: </h1>
+
+<div class="text-right">
+<form (ngSubmit)="searchMentors()">
+  <label for="name">Search by: </label>  &nbsp;
+    <input name="searchText" type="text" [(ngModel)]="searchText"> &nbsp;
+
+  <button type="submit" class="btn btn-success">Search</button>
+</form>
+</div>
+
+<b *ngIf="talents">{{mentors.length}} results found.</b>
+
+<table border="1" class="table table-dark">
+    <thead>
+      <th>
+        Name
+      </th>
+      <th>
+        Email
+      </th>
+      <th>
+        Phone
+      </th>
+    </thead>
+
+<tr *ngFor="let mentor of mentors">
+
+  
+  <td>
+    <a href="view/{{mentor.id}}">
+      {{ mentor.name }}
+    </a>
+    </td>
+    <td>
+    ({{ mentor.emailAddress }})
+    </td>
+    <td>
+      {{ mentor.phoneNumber }}  
+    </td>
+  </tr>
+
+</table>

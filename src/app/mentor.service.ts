@@ -10,7 +10,6 @@ import { catchError, retry } from 'rxjs/operators';
 import { TestBed } from '@angular/core/testing';
 import {  HttpErrorResponse } from '@angular/common/http';
 
-
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
@@ -18,16 +17,14 @@ const httpOptions = {
   })
 };
 
+
 @Injectable({
   providedIn: 'root'
 })
+export class MentorService {
 
-
-export class TalentService {
-    public talentinfo;
-  constructor(private http:HttpClient ) { 
-      //this.talentinfo=this.savetalent.talentform;
-  }
+   private mentorinfo;
+  constructor(private http:HttpClient) { }
 
 
   private handleError(error: HttpErrorResponse) {
@@ -45,46 +42,27 @@ export class TalentService {
     return throwError(
       'Something bad happened; please try again later.');
   };
-  
- public  printHello(){
-    return "Hello Orni";  }
 
- 
-  /*public  listTalents() {
-    const headers={
-      'idToken':localStorage.getItem('idToken')
-    };
-     return this.http.get('/assets/talent_list.json',{headers});
+    public  getMentors() {
 
-    }*/
-  public  getTalents() {
-
-    const headers={
-      'idToken':localStorage.getItem('idToken')
-    };
-      return this.http.get('http://localhost:7000/api/talents',{headers});
-      }
-
-  public  getTalentbyId(talentId) {
-        return this.http.get('http://localhost:7000/api/talents/'+talentId);
+      const headers={
+        'idToken':localStorage.getItem('idToken')
+      };
+        return this.http.get('http://localhost:7000/api/mentors',{headers});
         }
-  public saveTalent(t){
-    this.talentinfo=t;
-    console.log("the talent is :",this.talentinfo);
-    //alert("the talent is :"+this.talentinfo);
-    return this.http.post('http://localhost:7000/api/talents/',t,httpOptions);
-  }
-
-  public deleteTalent(talentId){
-    return   this.http.delete('http://localhost:7000/api/talents/'+talentId);
-  }
-
-  public createTalent(talent){
-    const headers={
-      'idToken':localStorage.getItem('idToken')
-    };
-    console.log('talent in angular service:',talent);
-    return   this.http.post('http://localhost:7000/api/talents/',talent,{headers});
-  }
   
+    public  getMentorbyId(mentorId) {
+          return this.http.get('http://localhost:7000/api/mentors/'+mentorId);
+          }
+
+    public saveMentor(t){
+      this.mentorinfo=t;
+      console.log("the talent is :",this.mentorinfo);
+      //alert("the talent is :"+this.talentinfo);
+      return this.http.post('http://localhost:7000/api/mentors/',t,httpOptions);
+    }
+  
+    public deleteMentor(mentorId){
+      return   this.http.delete('http://localhost:7000/api/mentors/'+mentorId);
+    }
 }
