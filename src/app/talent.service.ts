@@ -26,4 +26,13 @@ export class TalentService {
     return this.http.get('http://localhost:7000/api/talents/'+talentId);
   }
 
+  public createTalent(talent) {
+    const headers = {
+      'idToken': localStorage.getItem('idToken')
+    };
+
+    console.log("Talent object in ANgular service:", talent);
+    return this.http.post('http://localhost:7000/api/talents/', talent, {headers});
+  }
+
 }

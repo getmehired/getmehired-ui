@@ -8,11 +8,11 @@
 <!-- Page 1-->
   <span *ngIf="stepNumber == 1">
   <label for="firstName">First Name: </label> &nbsp;
-    <input name="firstName" type="text" > 
+    <input name="firstName" type="text" [(ngModel)]="firstName" > 
   
   <br>
   <label for="lastName">Last Name: </label> &nbsp;
-    <input name="lastName" type="text" >
+    <input name="lastName" type="text" [(ngModel)]="lastName">
 
   <br>
   <label for="phoneNumber">Phone Number: </label> &nbsp;
@@ -193,7 +193,15 @@
       
       <h3>Confirm Before Submitting</h3>
 
-       <button type="button" (click)="onSubmit(talentform.value)">Submit</button>
+      <b *ngIf="errors">{{errors.length}} errors found.</b>
+      <br/>
+      <ul>
+      <li *ngFor="let error of errors">
+          {{error.defaultMessage}}
+      </li>
+      </ul>  
+
+       <button type="button" (click)="createTalent()">Submit</button> 
        <div class="progress">
            <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
        </div>
