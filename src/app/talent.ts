@@ -23,7 +23,7 @@ export class Talent {
 	//private Immigration immigrationStatus;
 
 
-	//private String immigrationExpiaryStr;
+	immigrationExpiaryStr: string;
 
 
 	//private Date immigrationExpiary;
@@ -37,7 +37,7 @@ export class Talent {
 	//private Date graduationDate;
 
 
-	//private String graduationDateStr;
+	graduationDateStr: string;
 
 	//private Support suuportNeeded;
 
@@ -56,7 +56,7 @@ export class Talent {
 	//private Date jobStartdate;
 
 
-	//private String jobStartdateStr;
+	jobStartdateStr: string;
 
 	jobSalary: number;
 

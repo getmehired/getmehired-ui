@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {  FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
 import { TalentService } from '../talent.service';
+import { ProfileService } from '../profile.service'
 import { Talent } from '../talent';
+import { Profile } from '../profile';
 
 const URL = 'http://localhost:7000/api/files/resumes';
 
@@ -21,15 +23,15 @@ export class CreateTalentComponent implements OnInit {
 
     id: '',
     name: '', 
-    phoneNumber: '',
+    phoneNumber: '+1-519-708-2350',
     emailAddress: '',
-    address: '',
+    address: 'Test',
   
-    calendlyUrl: '',
+    calendlyUrl: 'https://calendly.com/test/15min?month=2019-08',
   
     //private TimezoneEnum timezone;
   
-    ssnNumber: '',
+    ssnNumber: '123-456-789',
   
     bankAccount: 0,
   
@@ -42,7 +44,7 @@ export class CreateTalentComponent implements OnInit {
     //private Immigration immigrationStatus;
   
   
-    //private String immigrationExpiaryStr;
+    immigrationExpiaryStr: '01-01-2020',
   
   
     //private Date immigrationExpiary;
@@ -50,13 +52,13 @@ export class CreateTalentComponent implements OnInit {
   
     //private Degree accademicDegree;
   
-    degreeSubject: '',
+    degreeSubject: 'Test',
   
   
     //private Date graduationDate;
   
   
-    //private String graduationDateStr;
+    graduationDateStr: '01-01-2020',
   
     //private Support suuportNeeded;
   
@@ -67,21 +69,21 @@ export class CreateTalentComponent implements OnInit {
   
     salaryStart: 0,
   
-    currentJob: '',
+    currentJob: 'Test',
   
-    currentEmployer: '',
+    currentEmployer: 'Test',
   
   
     //private Date jobStartdate;
   
   
-    //private String jobStartdateStr;
+    jobStartdateStr: '01-01-2020',
   
     jobSalary: 0,
   
-    newEmployer: '',
+    newEmployer: 'Test',
   
-    newPosition: '',
+    newPosition: 'Test',
   };
 
   public headers = {
@@ -92,6 +94,7 @@ export class CreateTalentComponent implements OnInit {
 
   constructor(
     private talentService: TalentService,
+    private profileService: ProfileService,
   ) {
   }
 
@@ -101,6 +104,16 @@ export class CreateTalentComponent implements OnInit {
          console.log('ImageUpload:uploaded:', item, status, response);
          alert('File uploaded successfully');
     };
+
+    this.profileService.getProfile().subscribe(
+      response => this.populateEmail(<Profile>response),
+      err => this.errors = err.error,
+      () => console.log('Observer got a complete notification')
+    );
+  }
+
+  populateEmail(profile: Profile){
+    this.talent.emailAddress = profile.email;
   }
 
   goToStep(stepNumber){
@@ -108,7 +121,7 @@ export class CreateTalentComponent implements OnInit {
   }
 
   createTalent(){
-    this.talent.name = this.firstName + ' ' + this.lastName;
+    this.talent.name = this.firstName + '' + this.lastName;
     this.talentService.createTalent(this.talent);
 
     this.talentService.createTalent(this.talent).subscribe(

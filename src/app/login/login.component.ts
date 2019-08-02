@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service'
+import { ProfileService } from '../profile.service'
 import { Router, Params } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Profile } from '../profile';
 import * as firebase from 'firebase/app';
 
 @Component({
@@ -20,6 +22,7 @@ export class LoginComponent {
 
   constructor(
     public authService: AuthService,
+    public profileService: ProfileService,
     private router: Router,
   ) {
   }
@@ -29,11 +32,15 @@ export class LoginComponent {
     .then(res => {
       firebase.auth().currentUser.getIdToken(true).then((idToken) => {
         localStorage.setItem('idToken', idToken);
-        this.router.navigate(['/list']);
+        // Check the profile to see whether it's already signed up or not
+        this.profileService.checkProfile();
       });
     }, err => {
       console.log(err);
       this.errorMessage = err.message;
     })
   }
+
+  
+
 }
