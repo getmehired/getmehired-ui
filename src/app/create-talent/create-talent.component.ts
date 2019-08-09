@@ -5,7 +5,7 @@ import { ProfileService } from '../profile.service'
 import { Talent } from '../talent';
 import { Profile } from '../profile';
 
-const URL = 'http://localhost:7000/api/files/resumes';
+const URL = 'http://18.225.22.182:7000/api/files/resumes';
 
 @Component({
   selector: 'app-create-talent',
@@ -22,67 +22,67 @@ export class CreateTalentComponent implements OnInit {
   talent: Talent = {
 
     id: '',
-    name: '', 
+    name: '',
     phoneNumber: '+1-519-708-2350',
     emailAddress: '',
     address: 'Test',
-  
+
     calendlyUrl: 'https://calendly.com/test/15min?month=2019-08',
-  
+
     //private TimezoneEnum timezone;
-  
+
     ssnNumber: '123-456-789',
-  
+
     bankAccount: 0,
-  
+
     routingNumber: 0,
-  
-  
+
+
     //private Citizenship citizenship;
-  
-  
+
+
     //private Immigration immigrationStatus;
-  
-  
+
+
     immigrationExpiaryStr: '01-01-2020',
-  
-  
+
+
     //private Date immigrationExpiary;
-  
-  
+
+
     //private Degree accademicDegree;
-  
+
     degreeSubject: 'Test',
-  
-  
+
+
     //private Date graduationDate;
-  
-  
+
+
     graduationDateStr: '01-01-2020',
-  
+
     //private Support suuportNeeded;
-  
+
     //private Objective objective;
-  
-  
+
+
     //private EmploymentStatus employmentStat;
-  
+
     salaryStart: 0,
-  
+
     currentJob: 'Test',
-  
+
     currentEmployer: 'Test',
-  
-  
+
+
     //private Date jobStartdate;
-  
-  
+
+
     jobStartdateStr: '01-01-2020',
-  
+
     jobSalary: 0,
-  
+
     newEmployer: 'Test',
-  
+
     newPosition: 'Test',
   };
 
@@ -112,7 +112,7 @@ export class CreateTalentComponent implements OnInit {
     );
   }
 
-  populateEmail(profile: Profile){
+  populateEmail(profile){
     this.talent.emailAddress = profile.email;
   }
 

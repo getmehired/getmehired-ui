@@ -19,11 +19,11 @@ export class TalentService {
       'idToken': localStorage.getItem('idToken')
     };
 
-    return this.http.get('http://localhost:7000/api/talents', {headers});
+    return this.http.get('http://18.225.22.182:7000/api/talents', {headers});
   }
 
   public getTalent(talentId) {
-    return this.http.get('http://localhost:7000/api/talents/'+talentId);
+    return this.http.get('http://18.225.22.182:7000/api/talents/'+talentId);
   }
 
   public createTalent(talent) {
@@ -32,7 +32,7 @@ export class TalentService {
     };
 
     console.log("Talent object in ANgular service:", talent);
-    return this.http.post('http://localhost:7000/api/talents/', talent, {headers});
+    return this.http.post('http://18.225.22.182:7000/api/talents/', talent, {headers});
   }
 
 }

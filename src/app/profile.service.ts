@@ -18,7 +18,7 @@ export class ProfileService {
       'idToken': localStorage.getItem('idToken')
     };
 
-    return this.http.get('http://localhost:7000/api/profiles/me', {headers});
+    return this.http.get('http://18.225.22.182:7000/api/profiles/me', {headers});
   }
 
   checkProfile(){
@@ -29,7 +29,7 @@ export class ProfileService {
     );
   }
 
-  profileBasedRouting(profile: Profile){
+  profileBasedRouting(profile){
      console.log("Profile object from service", profile);
      if(profile.talent){
       console.log("it's a talent profile", profile);
