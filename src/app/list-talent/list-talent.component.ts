@@ -21,7 +21,7 @@ export class ListTalentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.talentService.listTalents().subscribe(
+    this.talentService.getTalents().subscribe(
       response => { this.talents = <[]>response; this.allTalents=<[]>response; },
       err => console.error('Observer got an error: ', err),
       () => console.log('Observer got a complete notification')
